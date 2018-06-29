@@ -1,190 +1,173 @@
-Exercises: C\# Intro and Basic Syntax
-=====================================
+Lab: C\# Intro and Basic Syntax
+===============================
 
 Problems for exercises and homework for the ["Programming Fundamentals
 Extended" course @
 SoftUni](https://softuni.bg/courses/programming-fundamentals).
 
-Debit Card Number
------------------
+Greeting
+--------
 
-Write a program, which receives **4** **integers** on the console and
-**prints them** in **4-digit debit card format**. See the examples below
-for the appropriate formatting.
+Write a program, which **greets** the user by their **name**, which it
+**reads** from the **console**.
+
+### Create a New C\# Project, using Visual Studio
+
+Open **Visual Studio** and create a new project by going into **\[File
+New Project\]**:
+
+![](media/image1.png){width="5.111907261592301in"
+height="0.8519838145231846in"}
+
+After that, the project creation window will open.
+
+Select **Visual C\#**, then **Console Application** and name it
+appropriately:
+
+![](media/image2.png){width="4.643974190726159in"
+height="2.619048556430446in"}
+
+### Write the Program Logic
+
+A new file opens in the editor, which looks like this:
+
+![](media/image3.png){width="3.759803149606299in"
+height="2.515301837270341in"}
+
+Let's write the program logic. We want to **read** a name and then
+**print** that name with some additional text on the **console**. To
+accomplish this, we'll use **Console.ReadLine()** and
+**Console.WriteLine()**:
+
+![](media/image4.png){width="4.845387139107611in"
+height="2.7878969816272967in"}
+
+### Test the Program
+
+After we wrote the program logic, we can **start** our program, using
+**\[Ctrl+F5\]**:
+
+![](media/image5.png){width="7.139483814523184in"
+height="2.8441622922134733in"}
+
+Let's **type in** a name and see if it works:
+
+![](media/image6.png){width="3.2276531058617675in"
+height="1.190475721784777in"}
+
+If you followed all the steps correctly, you should be greeted by your
+program! Submit the code in **Judge** and test if it works correctly.
 
 ### Examples
 
-+-----------+---------------------+
-| **Input** | **Output**          |
-+===========+=====================+
-| 12        | 0012 0433 0001 5331 |
-|           |                     |
-| 433       |                     |
-|           |                     |
-| 1         |                     |
-|           |                     |
-| 5331      |                     |
-+-----------+---------------------+
-| 9182      | 9182 4221 0012 0003 |
-|           |                     |
-| 4221      |                     |
-|           |                     |
-| 12        |                     |
-|           |                     |
-| 3         |                     |
-+-----------+---------------------+
-| 812       | 0812 0321 0123 0022 |
-|           |                     |
-| 321       |                     |
-|           |                     |
-| 123       |                     |
-|           |                     |
-| 22        |                     |
-+-----------+---------------------+
+  **Input**   **Output**
+  ----------- ---------------
+  Pesho       Hello, Pesho!
+  Ivan        Hello, Ivan!
+  Merry       Hello, Merry!
 
-Rectangle Area
---------------
+Add Two Numbers
+---------------
 
-Write a program, which calculates a **rectangle's area**, based on its
-**width** and **height**. The **width** and **height** come as floating
-point numbers on the console, **formatted to the 2^nd^ character after
-the decimal point**.
+Write a program, which **reads 2 whole numbers** and **adds** them
+together. Then, print them in the following format:
+
+-   "**a + b = sum**"
+
+### Create a New C\# Project Inside the Solution
+
+In **Visual Studio**, create a new project in our **current solution**
+by **right clicking** the **solution** in the **Solution Explorer** and
+navigating to **\[Add New Project...**\]:
+
+![](media/image7.png){width="5.120226377952756in"
+height="4.128075240594925in"}
+
+After that, name it appropriately and hit **\[OK\]**:
+
+![](media/image8.png){width="5.008978565179352in"
+height="2.8249004811898515in"}
+
+### Change the Startup Project
+
+Now that you've created a new project inside the solution, you need to
+**set** **the startup project to the currently selected project**,
+otherwise whenever you hit **\[Ctrl+F5\]**, the **previous problem**
+will start. So **right click** the **solution** and hit "**Set Startup
+Projects"**:
+
+  ------------------------------------------------------------------- -- -----------------------------------------------------------------------------------
+  ![](media/image9.png){width="2.43005905511811in" height="2.84in"}      ![](media/image10.png){width="4.029761592300963in" height="2.8433923884514436in"}
+  ------------------------------------------------------------------- -- -----------------------------------------------------------------------------------
+
+Now we're ready to write our logic.
 
 ### Examples
 
 +-----------+------------+
 | **Input** | **Output** |
 +===========+============+
-| 2         | 14.00      |
+| 2         | 2 + 5 = 7  |
 |           |            |
-| 7         |            |
+| 5         |            |
 +-----------+------------+
-| 7         | 56.00      |
+| 1         | 1 + 3 = 4  |
 |           |            |
-| 8         |            |
+| 3         |            |
 +-----------+------------+
-| 12.33     | 61.65      |
+| -3        | -3 + 5 = 2 |
 |           |            |
 | 5         |            |
 +-----------+------------+
 
-Miles to Kilometers
--------------------
+Employee Data
+-------------
 
-Write a program, which **converts** **miles** to **kilometers**.
-**Format** the output to the **2^nd^ decimal place**.
+Write a program to read **data** about an **employee** and print it on
+the console with the appropriate formatting. The order the input comes
+in is as such:
 
-Note: **1 mile == 1.60934 kilometers**
+-   Name -- **no** formatting
 
-### Examples
+-   Age -- **no** formatting
 
-  **Input**   **Output**      **Input**   **Output**      **Input**   **Output**
-  ----------- ------------ -- ----------- ------------ -- ----------- ------------
-  60          96.56           1           1.61            52.1113     83.86
+-   Employee ID -- **8-digit padding** (employee id 356 is 00000356)
 
-Beverage Labels
----------------
-
-Write a program, which reads a food product **name**, **volume**,
-**energy content** **per 100ml** and **sugar content per 100ml**.
-Calculate the **energy** and **sugar content** for the **given volume**
-and print them on the console in the following format:
-
--   Name -- as per the input
-
--   Volume -- **integer**, **suffixed** by "**ml**" (e.g. "**220ml**")
-
--   Energy content -- **integer**, **suffixed** by "**kcal**" (e.g.
-    "**500kcal**")
-
--   Sugar content -- **integer**, **suffixed** by "**g**" (e.g.
-    "**30g**")
+-   Monthly Salary -- formatted to **2 decimal places** (2345.56789
+    becomes 2345.56)
 
 ### Examples
 
-+-----------+----------------------+
-| **Input** | **Output**           |
-+===========+======================+
-| Nuka-Cola | 220ml Nuka-Cola:     |
-|           |                      |
-| 220       | 660kcal, 154g sugars |
-|           |                      |
-| 300       |                      |
-|           |                      |
-| 70        |                      |
-+-----------+----------------------+
-
-+--------------------+---------------------------+
-| **Input**          | **Output**                |
-+====================+===========================+
-| Ice Cold Nuka-Cola | 250ml Ice Cold Nuka-Cola: |
-|                    |                           |
-| 250                | 875kcal, 162.5g sugars    |
-|                    |                           |
-| 350                |                           |
-|                    |                           |
-| 65                 |                           |
-+--------------------+---------------------------+
-
-+-------------------+--------------------------+
-| **Input**         | **Output**               |
-+===================+==========================+
-| Nuka-Cola Quantum | 350ml Nuka-Cola Quantum: |
-|                   |                          |
-| 350               | 2100kcal, 490g sugars    |
-|                   |                          |
-| 600               |                          |
-|                   |                          |
-| 140               |                          |
-+-------------------+--------------------------+
-
-\* Character Stats
-------------------
-
-Write a program, which **displays information** about a video game
-character. You will receive their **name**, **current health**,
-**maximum health**, **current energy** and **maximum energy** on
-separate lines. The **current** values will **always** be valid (**equal
-or lower** than their respective **max** values). Print them in the
-format as per the examples.
-
-### Examples
-
-+-------------+-------------+-------------+-------------+-------------+
-| **Input**   | **Output**  |             | **Input**   | **Output**  |
-+=============+=============+=============+=============+=============+
-| Mayro       | Name: Mayro |             | Bauser      | Name:       |
-|             |             |             |             | Bauser      |
-| 5           | Health:     |             | 10          |             |
-|             | \|\|\|\|\|\ |             |             | Health:     |
-| 10          | |\.....\|   |             | 10          | \|\|\|\|\|\ |
-|             |             |             |             | |\|\|\|\|\| |
-| 9           | Energy:     |             | 10          | \|          |
-|             | \|\|\|\|\|\ |             |             |             |
-| 10          | |\|\|\|\|.\ |             | 10          | Energy:     |
-|             | |           |             |             | \|\|\|\|\|\ |
-|             |             |             |             | |\|\|\|\|\| |
-|             |             |             |             | \|          |
-+-------------+-------------+-------------+-------------+-------------+
-
-+-------------+-------------+-------------+-------------+-------------+
-| **Input**   | **Output**  |             | **Input**   | **Output**  |
-+=============+=============+=============+=============+=============+
-| Loogi       | Name: Loogi |             | Toad        | Name: Toad  |
-|             |             |             |             |             |
-| 8           | Health:     |             | 0           | Health:     |
-|             | \|\|\|\|\|\ |             |             | \|\.....\|  |
-| 20          | |\|\|\|\... |             | 5           |             |
-|             | \...\...\.. |             |             | Energy:     |
-| 2           | .\|         |             | 0           | \|\...\...\ |
-|             |             |             |             | ....\|      |
-| 14          | Energy:     |             | 10          |             |
-|             | \|\|\|\...\ |             |             |             |
-|             | ...\...\... |             |             |             |
-|             | \|          |             |             |             |
-+-------------+-------------+-------------+-------------+-------------+
++-----------+-----------------------+
+| **Input** | **Output**            |
++===========+=======================+
+| Ivan      | Name: Ivan            |
+|           |                       |
+| 24        | Age: 24               |
+|           |                       |
+| 1192      | Employee ID: 00001192 |
+|           |                       |
+| 1500.353  | Salary: 1500.35       |
++-----------+-----------------------+
+| Peter     | Name: Peter           |
+|           |                       |
+| 30        | Age: 30               |
+|           |                       |
+| 113236    | Employee ID: 00113236 |
+|           |                       |
+| 1738.1112 | Salary: 1738.11       |
++-----------+-----------------------+
+| Naiden    | Name: Naiden          |
+|           |                       |
+| 27        | Age: 27               |
+|           |                       |
+| 1111222   | Employee ID: 01111222 |
+|           |                       |
+| 3560      | Salary: 3560.00       |
++-----------+-----------------------+
 
 ### Hints
 
--   You can print a character **multiple** times, using **new
-    string(character, count)**.
+-   You can use "**D**" and "**F**" to format numbers in C\#. You can
+    read more about formatting strings
+    [here](https://msdn.microsoft.com/en-us/library/dwhawy9k(v=vs.110).aspx).
