@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bus Schedule</title>
+    <style>
+        #schedule { text-align: center; width: 400px; }
+        input { width: 120px; }
+        #info { background-color:aquamarine; border:1px solid black; margin:0.25em; }
+        .info { font-size: 1.5em; padding: 0.25em; }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<div id="schedule">
+    <div id="info"><span class="info">Not Connected</span></div>
+    <div id="controls">
+        <input id="depart" value="Depart" type="button" onclick="result.depart()">
+        <input id="arrive" value="Arrive" type="button" onclick="result.arrive()" disabled="true">
+    </div>
+</div>
+<script>
+    function solve() {
+        const BASE_URL = 'https://judgetests.firebaseio.com/schedule/';
+        let currentStopId = 'depot';
+        let nextStop = '';
+
+        function depart() {
+            $.ajax({
+                method: 'GET',
+                url: BASE_URL + currentStopId + '.json'
+            }).then(handleDeparture)
+                .catch(handleError)
+        }
+
+        function arrive() {
+            $('#arrive').attr('disabled', true);
+            $('#depart').attr('disabled', false);
+            $('.info').text(`Arriving at ${nextStop}`);
+        }
+
+        function handleError(err) {
+            $('.info').text('Error');
+            $('#arrive').attr('disabled', true);
+            $('#depart').attr('disabled', true);
+        }
+
+        function handleDeparture(info) {
+            $('#arrive').attr('disabled', false);
+            $('#depart').attr('disabled', true);
+            nextStop = info.name;
+            $('.info').text(`Next stop ${nextStop}`);
+            currentStopId = info.next;
+        }
+
+        return {
+            depart,
+            arrive
+        };
+    }
+    let result = solve();
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+#load {
+    font-size: 24px;
+    color: crimson;
+}
+#display {
+    border: 3px solid darkred;
+    padding: 5px;
+    background-color: lightgoldenrodyellow;
+    display: inline-table;
+}
+.book {
+    border: 3px solid saddlebrown;
+    background-color: antiquewhite;
+    padding: 5px;
+    margin: 20px;
+    display: inline-table;
+}
+#addBook {
+    margin-top: 8px;
+}
+fieldset { display: inline-table; vertical-align: top; }
+fieldset#main { width: 70%; }
+#errDiv {
+    color: orangered;
+    font-size: 32px;
+}
+#loading {
+    color: whitesmoke;
+    font-size: 32px;
+    text-align: center;
+    background-color: darkcyan;
+}

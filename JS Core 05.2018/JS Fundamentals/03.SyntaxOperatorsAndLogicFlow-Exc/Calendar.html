@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monthly Calendar</title>
+    <style>
+        .prev-month, .next-month { color: #CCC }
+        .today { font-weight: bold; background: #DDD; }
+        .title { background: #AAAAFF; margin: 10px 0; padding:5px }
+        table { border: 1px solid #CCC;}
+        td { text-align: center; }
+        #calendarCode { width: 100%; }
+    </style>
+    <script>
+        function calendar([day, month, year])
+        {
+            let table = "<table>\n\t<tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>";
+
+            let firstDay = new Date(year, month - 1, 2);
+            let dayOfWeek = firstDay.getDay() - 1;
+            let currentDay = 0;
+            let lastDay = 7;
+
+            //if (dayOfWeek !== 0) {
+                table += "\n\t<tr>";
+                let prevMonthDays = new Date(year, month - 1, 0).getDate();
+
+                for (let i = prevMonthDays - dayOfWeek + 1; i <= prevMonthDays; i++) {
+                    table += `<td class="prev-month">${i}</td>`;
+                }
+
+                for (let i = 1; i <= 7 - dayOfWeek ; i++) {
+                    if (i === day){
+                        table += `<td class="today">${i}</td>`;
+                    } else {
+                        table += `<td>${i}</td>`;
+                    }
+
+                    currentDay = i;
+                }
+
+                table += "</tr>";
+            //}
+
+            currentDay++;
+
+            while (currentDay <= new Date(year, month, 0).getDate()) {
+                table += "\n\t<tr>";
+
+                for (let col = 1; col <= 7; col++) {
+                    if (currentDay > new Date(year, month, 0).getDate()) {
+                        lastDay = col;
+                        break;
+                    }
+
+                    if (currentDay === day){
+                        table += `<td class="today">${currentDay}</td>`;
+                    } else {
+                        table += `<td>${currentDay}</td>`;
+                    }
+
+                    currentDay++;
+
+                    if (col === 7) {
+                        table += "</tr>";
+                    }
+                }
+            }
+
+            for (let i = 1; i <= 8 - lastDay; i++) {
+                table += `<td class="next-month">${i}</td>`;
+            }
+
+            table += "</tr>\n</table>";
+            return table;
+        }
+    </script>
+</head>
+
+<body>
+Day: <input id="day" type="number" value="4" />
+Month: <input id="month" type="number" value="9" />
+Year: <input id="year" type="number" value="2016" />
+<input type="button" value="Show"
+       onclick="let calendarHTML =
+            calendar([document.getElementById('day').value,
+                document.getElementById('month').value,
+                document.getElementById('year').value]);
+            document.getElementById('calendar').innerHTML = calendarHTML;
+            document.getElementById('calendarCode').innerText = calendarHTML" />
+<div class="title">Calendar:</div>
+<div id="calendar">Calendar will be shown here</div>
+<div class="title">HTML:</div>
+<textarea rows="12" id="calendarCode"></textarea>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+<article class="post post-content">
+    <p>{{commentText}}</p>
+    <div class="info">
+        submitted {{commentTime}} ago by {{commentAuthor}} | {{#if isCommentAuthor}}<a href="#/deleteComment/{{_id}}/post/{{postId}}" class="deleteLink">delete</a>{{/if}}
+    </div>
+</article>
