@@ -1,0 +1,3 @@
+select distinct(salary)
+from employees
+order by salary;

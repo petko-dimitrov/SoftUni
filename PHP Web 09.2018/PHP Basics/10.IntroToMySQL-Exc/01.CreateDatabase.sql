@@ -1,0 +1,12 @@
+CREATE TABLE `minions` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(50) NULL,
+	`age` INT NULL,
+	`town_id` INT NULL,
+	PRIMARY KEY (`id`)
+);
+CREATE TABLE `towns` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(50) NULL DEFAULT '0',
+	PRIMARY KEY (`id`)
+);
