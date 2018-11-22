@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'profile' %}
+
+{% block main %}
+    <h1>Profile</h1>
+    <div>
+        <strong>Email:</strong> {{ user.email }}
+        <br>
+        <strong>Full Name:</strong> {{ user.fullName }}
+    </div>
+{% endblock %}
