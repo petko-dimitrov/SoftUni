@@ -3,12 +3,14 @@
 namespace SoftUniBlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Article
  *
  * @ORM\Table(name="articles")
  * @ORM\Entity(repositoryClass="SoftUniBlogBundle\Repository\ArticleRepository")
+ * @Serializer\ExclusionPolicy("all")
  */
 class Article
 {
@@ -25,6 +27,7 @@ class Article
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Serializer\Expose
      */
     private $title;
 
@@ -32,6 +35,7 @@ class Article
      * @var string
      *
      * @ORM\Column(name="content", type="text")
+     * @Serializer\Expose
      */
     private $content;
 
