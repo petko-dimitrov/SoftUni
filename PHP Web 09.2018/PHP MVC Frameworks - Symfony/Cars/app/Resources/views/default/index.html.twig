@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for msg in app.session.flashBag.get('message') %}
+        <div style="color: red"><p>{{ msg }}</p></div>
+    {% endfor %}
+    <h1>Home</h1>
+    <ul>
+        <li><a href="{{ path('customers_asc') }}">Customers in ascending order</a></li>
+        <li><a href="{{ path('customers_desc') }}">Customers in descending order</a></li>
+        <li>
+            <form action="{{ path('cars_from_make') }}" method="POST">
+                Cars from make:
+                <input type="text" name="make">
+                <input type="submit" value="Make">
+            </form>
+        </li>
+        <li><a href="{{ path('suppliers_local') }}">Local suppliers</a></li>
+        <li><a href="{{ path('suppliers_importers') }}">Importer suppliers</a></li>
+        <li>
+            <form action="{{ path('car_with_parts') }}" method="POST">
+                Car with parts:
+                <input type="text" name="car_id">
+                <input type="submit" value="Car Id">
+            </form>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Customers</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Birth Date</th>
+            <th>Is Young Driver</th>
+        </tr>
+        </thead>
+        {% for customer in customers %}
+            <tr>
+                <td>{{ customer.name }}</td>
+                <td>{{ customer.birthDate|date("d/m/Y") }}</td>
+                {% if customer.isYoungDriver %}
+                    <td>Yes</td>
+                {% else %}
+                    <td>No</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+

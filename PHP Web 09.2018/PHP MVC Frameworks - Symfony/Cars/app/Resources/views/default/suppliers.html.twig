@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cars</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Number of Parts</th>
+        </tr>
+        </thead>
+        {% for supplier in suppliers %}
+            <tr>
+                <td>{{ supplier[0].id }}</td>
+                <td>{{ supplier[0].name }}</td>
+                <td>{{ supplier.count_parts }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
