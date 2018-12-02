@@ -6,6 +6,7 @@
     {% endfor %}
     <h1>Home</h1>
     <ul>
+        <li><a href="{{ path('cars_all') }}">All cars</a></li>
         <li><a href="{{ path('customers_asc') }}">Customers in ascending order</a></li>
         <li><a href="{{ path('customers_desc') }}">Customers in descending order</a></li>
         <li>
@@ -22,6 +23,29 @@
                 Car with parts:
                 <input type="text" name="car_id">
                 <input type="submit" value="Car Id">
+            </form>
+        </li>
+        <li>
+            <form action="{{ path('sales_by_customer') }}" method="POST">
+                Sales by customer:
+                <input type="text" name="customer_id">
+                <input type="submit" value="Customer Id">
+            </form>
+        </li>
+        <li><a href="{{ path('sales_all') }}">All sales</a></li>
+        <li>
+            <form action="{{ path('sales_one') }}" method="POST">
+                Sale by id:
+                <input type="text" name="sale_id">
+                <input type="submit" value="Sale Id">
+            </form>
+        </li>
+        <li><a href="{{ path('sales_discounted') }}">Discounted sales</a></li>
+        <li>
+            <form action="{{ path('sales_discounted_percent') }}" method="POST">
+                 Discounted sales by percent:
+                <input type="text" name="percent">
+                <input type="submit" value="Percent">
             </form>
         </li>
     </ul>

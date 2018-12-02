@@ -10,4 +10,86 @@ namespace CarsBundle\Repository;
  */
 class SaleRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getTotalSalesByCustomer($id)
+    {
+        $query = $this->getEntityManager()->createQuery(
+            'SELECT cm.name, COUNT(c.id) AS cars_bought
+                FROM CarsBundle:Sale s
+                JOIN s.customer cm 
+                JOIN s.car c 
+                WHERE s.customer = :id
+                GROUP BY cm.name'
+        );
+
+        $query->setParameter('id', $id);
+        return $query->getResult();
+    }
+
+    public function getAllSalesByCustomer($id)
+    {
+        $query = $this->getEntityManager()->createQuery(
+            'SELECT c.id
+                FROM CarsBundle:Sale s
+                JOIN s.customer cm 
+                JOIN s.car c 
+                WHERE s.customer = :id'
+        );
+
+        $query->setParameter('id', $id);
+        return $query->getResult();
+    }
+
+    public function getAllSales()
+    {
+        $query = $this->getEntityManager()->createQuery(
+            'SELECT c.id, c.make, c.model, c.travelledDistance, cm.name, s.discount
+                FROM CarsBundle:Sale s
+                JOIN s.customer cm 
+                JOIN s.car c'
+        );
+
+        return $query->getResult();
+    }
+
+    public function getAllSalesById($id)
+    {
+        $query = $this->getEntityManager()->createQuery(
+            'SELECT c.id, c.make, c.model, c.travelledDistance, cm.name, s.discount
+                FROM CarsBundle:Sale s
+                JOIN s.customer cm 
+                JOIN s.car c 
+                WHERE s.id = :id'
+        );
+
+        $query->setParameter('id', $id);
+        return $query->getResult();
+    }
+
+    public function getDiscountedSales()
+    {
+        $query = $this->getEntityManager()->createQuery(
+            "SELECT c.id, c.make, c.model, c.travelledDistance, cm.name, s.discount
+                FROM CarsBundle:Sale s
+                JOIN s.customer cm 
+                JOIN s.car c
+                WHERE s.discount > 0"
+        );
+
+        return $query->getResult();
+    }
+
+    public function getDiscountedSalesByPercent($discount)
+    {
+        $query = $this->getEntityManager()->createQuery(
+            "SELECT c.id, c.make, c.model, c.travelledDistance, cm.name, s.discount
+                FROM CarsBundle:Sale s
+                JOIN s.customer cm 
+                JOIN s.car c
+                WHERE s.discount = :discount"
+        );
+
+        $query->setParameter('discount', $discount);
+
+        return $query->getResult();
+    }
 }

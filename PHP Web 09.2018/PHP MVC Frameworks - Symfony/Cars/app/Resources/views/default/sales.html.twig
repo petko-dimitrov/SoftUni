@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Sales</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Travelled Distance</th>
+        <th>Customer</th>
+        <th>Discount</th>
+    </tr>
+    </thead>
+    {% for sale in sales %}
+        <tr>
+            <td>{{ sale.make }}</td>
+            <td>{{ sale.model }}</td>
+            <td>{{ sale.travelledDistance }}</td>
+            <td>{{ sale.name }}</td>
+            <td>{{ sale.discount * 100 }}%</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5">No sales found.</td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+

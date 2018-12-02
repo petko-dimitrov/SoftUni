@@ -17,4 +17,13 @@ class PartRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('car_id', $id)
             ->getQuery()->getResult();
     }
+
+    public function getSumOfPartsByCar($id)
+    {
+        return $this->createQueryBuilder('p')
+            ->where(':car_id MEMBER OF p.cars')
+            ->setParameter('car_id', $id)
+            ->select('SUM(p.price) AS total_price')
+            ->getQuery()->getResult();
+    }
 }

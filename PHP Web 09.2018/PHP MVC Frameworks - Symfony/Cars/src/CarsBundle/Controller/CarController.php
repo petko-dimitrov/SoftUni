@@ -3,14 +3,12 @@
 namespace CarsBundle\Controller;
 
 use CarsBundle\Entity\Car;
-use CarsBundle\Entity\Customer;
 use CarsBundle\Entity\Part;
-use CarsBundle\Entity\Supplier;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CarsController extends Controller
+class CarController extends Controller
 {
     /**
      * @Route("/", name="homepage")
@@ -24,27 +22,16 @@ class CarsController extends Controller
     }
 
     /**
-     * @Route("/customers/all/ascending", name="customers_asc")
+     * @Route("cars/all", name="cars_all")
      */
-    public function orderedCustomersAsc ()
+    public function allCars()
     {
-        $customers = $this->getDoctrine()
-            ->getRepository(Customer::class)
-            ->getAllCustomers('ASC');
+        $cars = $this->getDoctrine()
+            ->getRepository(Car::class)
+            ->findAll();
 
-        return $this->render('default/customer.html.twig', ['customers' => $customers]);
-    }
-
-    /**
-     * @Route("/customers/all/descending", name="customers_desc")
-     */
-    public function orderedCustomersDesc ()
-    {
-        $customers = $this->getDoctrine()
-            ->getRepository(Customer::class)
-            ->getAllCustomers('DESC');
-
-        return $this->render('default/customer.html.twig', ['customers' => $customers]);
+        return $this->render('default/cars.html.twig',
+            ['cars' => $cars]);
     }
 
     /**
@@ -67,29 +54,6 @@ class CarsController extends Controller
         return $this->render('default/cars.html.twig', ['cars' => $cars]);
     }
 
-    /**
-     * @Route("/suppliers/local", name="suppliers_local")
-     */
-    public function localSuppliers ()
-    {
-        $suppliers = $this->getDoctrine()
-            ->getRepository(Supplier::class)
-            ->getAllSuppliers(0);
-
-        return $this->render('default/suppliers.html.twig', ['suppliers' => $suppliers]);
-    }
-
-    /**
-     * @Route("/suppliers/importers", name="suppliers_importers")
-     */
-    public function importerSuppliers ()
-    {
-        $suppliers = $this->getDoctrine()
-            ->getRepository(Supplier::class)
-            ->getAllSuppliers(1);
-
-        return $this->render('default/suppliers.html.twig', ['suppliers' => $suppliers]);
-    }
 
     /**
      * @Route("/cars/parts", name="car_with_parts")
@@ -118,4 +82,6 @@ class CarsController extends Controller
         return $this->render('default/car-with-parts.html.twig',
             ['car' => $car, 'parts' => $parts]);
     }
+
+
 }
